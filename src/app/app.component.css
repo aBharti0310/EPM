@@ -1,0 +1,27 @@
+/* .vertical-menu {
+    width: 200px;
+  } */
+  
+  .vertical-menu a {
+    /* background-color: #eee; */
+    color: black;
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .vertical-menu a:hover {
+     color: rgb(17, 202, 73);
+     cursor: pointer;
+  }
+  
+  .vertical-menu a.active {
+    /* background-color: #4CAF50; */
+    color: rgb(48, 16, 189);
+    cursor: pointer;
+  }
+
+  /* .row {
+    border: 1px 1px 1px 1px solid;
+  } */

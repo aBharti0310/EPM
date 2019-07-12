@@ -1,0 +1,84 @@
+<br><br><br>
+
+<div class="col-md-12">
+<div class="col-md-4">
+  Total Budget :
+</div> 
+<div class="col-md-4">
+  <input type="text" class="form-control" [(ngModel)]="totalBudget" required>
+</div>
+<div class="col-md-4">
+  <button class="btn btn-primary" type="button" (click)='addBudget()' [disabled]="totalBudget==''">Add</button>
+</div>
+</div>
+
+<div class="col-md-12"></div>
+
+<div class="col-md-12">
+<div class="col-md-4">
+  Categories :
+</div>
+<div class="col-md-4">
+  <input type="text" class="form-control" [(ngModel)]="categories" required>
+
+</div>
+<div class="col-md-4">
+  <button class="btn btn-primary" type="button" (click)='addCategories()' [disabled]="categories==''">Add</button>
+</div>
+</div>
+
+<div class="col-md-12"> <br><br><br></div>
+<div class="col-md-6 col-md-offset-2">
+<table class="table table-hover">
+  <tr>
+    <th>
+      Category Name
+    </th>
+    <th>
+      Action
+    </th>
+  </tr>
+  <tr *ngFor='let category of categoryList| paginate: { itemsPerPage: 5, currentPage: p } ;let i = index'>
+    <td *ngIf='i != "" && category.isDelete !=0'>
+        {{category.category}}
+    </td>
+    <td *ngIf='i != "" && category.isDelete !=0'>
+        <i class="fa fa-trash"
+        (click)="confirmDelete(i)" data-toggle="modal" data-target="#myModal" style="cursor: pointer;"></i>
+    </td>
+  </tr>
+</table>
+</div>
+
+
+<!-- <div class="col-md-6 col-md-offset-2" *ngFor='let category of categoryList| paginate: { itemsPerPage: 5, currentPage: p } ;let i = index' style="border: 1px solid black">
+
+  <span *ngIf='i != "" && category.isDelete !=0'>{{category.category}}&nbsp;&nbsp;<i class="fa fa-trash pull-right"
+      (click)="confirmDelete(i)" data-toggle="modal" data-target="#myModal" style="cursor: pointer;"></i></span>
+</div> -->
+<br>
+<div class="col-md-6 col-md-offset-2">
+  <br>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>
+
+
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog modal-sm">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure, you want to delete?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="deleteCategoryList(index)">Yes</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+      </div>
+    </div>
+
+  </div>
+</div>

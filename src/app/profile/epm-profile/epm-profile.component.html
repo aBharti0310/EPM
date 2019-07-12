@@ -1,0 +1,65 @@
+<br>
+<div class="col-md-10 col-md-offset-2">
+  <b>Deleted Expenses :</b>
+</div>
+<div class="col-md-10 col-md-offset-2">
+  <table  class="table table-hover" style="width:60%">
+    <tr>
+      <th>Category</th>
+      <th>Item Name</th>
+      <th>Expense Date</th>
+      <th>Undo</th>
+    </tr>
+    <tr *ngFor="let expense of allExpenseList| paginate: { itemsPerPage: 5, currentPage: p };let i=index">
+      <td *ngIf="expense.category != '' && expense.isDelete ==0">{{expense.category}}</td>
+      <td *ngIf="expense.category != '' && expense.isDelete ==0">{{expense.itemName}}</td>
+      <td *ngIf="expense.category != '' && expense.isDelete ==0">{{expense.expenseDate | date: 'dd/MM/yyyy'}}</td>
+      <td *ngIf="expense.category != '' && expense.isDelete ==0">
+        <i class="fa fa-plus" (click)="undoDeletedExpense(i)" style="cursor: pointer;"></i> </td>
+
+    </tr>
+  </table>
+  <br>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>
+
+<div class="col-md-12">
+  <hr>
+</div>
+
+<div class="col-md-10 col-md-offset-2">
+  <b>Deleted Category :</b>
+</div>
+
+<div class="col-md-10 col-md-offset-2">
+  <table class="table table-hover" style="width:60%">
+    <tr>
+      <th>Category Name</th>
+      <th>Undo</th>
+    </tr>
+    <tr *ngFor='let category of allCategory| paginate: { itemsPerPage: 5, currentPage: p } ;let i = index'>
+      <td *ngIf='i != "" && category.isDelete ==0'> {{category.category}}  
+      </td>
+      <td *ngIf='i != "" && category.isDelete ==0'>
+          <i class="fa fa-plus" (click)="undoDeletedCategory(i)" style="cursor: pointer;"></i>
+      </td>
+    </tr>
+  </table>
+  <br>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
