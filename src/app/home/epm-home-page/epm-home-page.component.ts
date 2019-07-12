@@ -105,13 +105,6 @@ export class EpmHomePageComponent implements OnInit {
         title: {
           text: "Budget Overview",
           display: true
-        },
-        scales: {
-          yAxes: [{
-            ticks: {
-              beginAtZero: true
-            }
-          }]
         }
       }
     });
@@ -144,13 +137,6 @@ export class EpmHomePageComponent implements OnInit {
         title: {
           text: "Category wise split",
           display: true
-        },
-        scales: {
-          yAxes: [{
-            ticks: {
-              beginAtZero: true
-            }
-          }]
         }
       }
     });
