@@ -17,6 +17,7 @@ export class EpmHomePageComponent implements OnInit {
   CategorySplitPieChart;
   hideCategorySplitGraph = true;
   hideCategorySplitTable = false;
+  totalSpent;
 
   ngOnInit() {
     //retriving all expense details...............
@@ -87,8 +88,7 @@ export class EpmHomePageComponent implements OnInit {
         totalExpense = totalExpense + this.expenseDetails[i].amount
       }
     }
-    let per = (totalExpense / totalBudget) * 100;
-    console.log(per);
+    this.totalSpent = (totalExpense / totalBudget) * 100;
     ///////...................
 
     // customizing pie chart for budget Overview..............

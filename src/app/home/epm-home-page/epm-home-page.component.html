@@ -1,6 +1,7 @@
 <br>
 <div class="col-md-6" style="width: 350px">
     <canvas id="chartForBudgetOverview"></canvas>
+    Spent :<label *ngIf="totalSpent != Infinity || totalSpent != NaN"> <span>{{totalSpent| number:'1.2-2'}}</span> %</label>
   </div>
 <div class="col-md-6" style="width: 350px" [hidden]='hideCategorySplitGraph'>
     <canvas id="chartForExpenseSplit"></canvas>
