@@ -44,6 +44,7 @@ export class EpmHomePageComponent implements OnInit {
         this.expenseDetails = this.service.getAllExpenseList()
       }
     }
+    this.getDetails();
 
   }
   //method for confirmation before deleting expense list..........
@@ -54,6 +55,12 @@ export class EpmHomePageComponent implements OnInit {
   //method to customize pie chart........... 
   getDetails() {
     let totalBudget = JSON.parse(localStorage.getItem('totalBudget'))
+    let activeExpense = []
+    for (let i = 0; i < Object.keys(this.expenseDetails).length; i++) {
+      if (this.expenseDetails[i].isDelete == 1) {
+        activeExpense.push(this.expenseDetails[i])
+      }
+    }
 
     let totalExpense = 0;
     let firstFiveItemName = [];
@@ -62,9 +69,10 @@ export class EpmHomePageComponent implements OnInit {
     if (Object.keys(this.expenseDetails).length <= 6) {
       this.hideCategorySplitGraph = false;
       this.hideCategorySplitTable = true
-      for (let i = 0; i < Object.keys(this.expenseDetails).length; i++) {
-        firstFiveItemName.push(this.expenseDetails[i].itemName)
-        firstFiveItemAmount.push(this.expenseDetails[i].amount)
+      for (let i = 0; i < Object.keys(activeExpense).length; i++) {
+          firstFiveItemName.push(this.expenseDetails[i].itemName)
+          firstFiveItemAmount.push(this.expenseDetails[i].amount)
+
       }
     }
     else {
