@@ -35,7 +35,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 VVI- Do not refresh the page once aplication get loaded, it will clear all the saved data in local storage
 
 1. inside the terminal run this command -npm install
-2. First go to setting page and add total budget and categories.
+2. First go to setting page and add total budget and categories else user won't be able to add a new expense.
 3. now on the home page you can add new expenses.
 4. category wise split chart is visible till first five entry only.
 5. every deleted entry is a soft delete. can be varified in object value.(if isDelete = 0 entry is deleted, if 1 entry is active )

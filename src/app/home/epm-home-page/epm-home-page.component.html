@@ -1,7 +1,7 @@
 <br>
 <div class="col-md-6" style="width: 350px">
     <canvas id="chartForBudgetOverview"></canvas>
-    Spent :<label *ngIf="totalSpent != Infinity || totalSpent != NaN"> <span>{{totalSpent| number:'1.2-2'}}</span> %</label>
+    <label *ngIf="hideTotalSpent"> Spent :<span>{{totalSpent| number:'1.2-2'}}</span> %</label>
   </div>
 <div class="col-md-6" style="width: 350px" [hidden]='hideCategorySplitGraph'>
     <canvas id="chartForExpenseSplit"></canvas>
@@ -10,7 +10,7 @@
 
 <div class="col-md-12">
   <br>
-  <button class='btn btn-primary' (click)="addExpense()">Add Expense</button>
+  <button class='btn btn-primary' (click)="addExpense()" [disabled]='1>totalBudget || totalBudget==null'>Add Expense</button>
 </div>
 
 <div class="col-md-12"><br></div>

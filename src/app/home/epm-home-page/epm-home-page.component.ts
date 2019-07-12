@@ -18,8 +18,11 @@ export class EpmHomePageComponent implements OnInit {
   hideCategorySplitGraph = true;
   hideCategorySplitTable = false;
   totalSpent;
+  totalBudget;
+  hideTotalSpent=true;
 
   ngOnInit() {
+    this.totalBudget = JSON.parse(localStorage.getItem('totalBudget'))
     //retriving all expense details...............
     this.expenseDetails = this.service.getAllExpenseList()
     //method to initialize pie chart...........
@@ -55,7 +58,7 @@ export class EpmHomePageComponent implements OnInit {
 
   //method to customize pie chart........... 
   getDetails() {
-    let totalBudget = JSON.parse(localStorage.getItem('totalBudget'))
+    
     let activeExpense = []
     for (let i = 0; i < Object.keys(this.expenseDetails).length; i++) {
       if (this.expenseDetails[i].isDelete == 1) {
@@ -88,7 +91,14 @@ export class EpmHomePageComponent implements OnInit {
         totalExpense = totalExpense + this.expenseDetails[i].amount
       }
     }
-    this.totalSpent = (totalExpense / totalBudget) * 100;
+    this.totalSpent = (totalExpense / this.totalBudget) * 100;
+    if(this.totalSpent==NaN || this.totalSpent==null){
+      this.hideTotalSpent=true;
+    }
+    else{
+      this.hideTotalSpent=false;
+    }
+    
     ///////...................
 
     // customizing pie chart for budget Overview..............
@@ -97,7 +107,7 @@ export class EpmHomePageComponent implements OnInit {
       data: {
         labels: ["Total Budget", "Total Expense"],
         datasets: [{
-          data: [totalBudget, totalExpense],
+          data: [this.totalBudget, totalExpense],
           backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
             'rgba(54, 162, 235, 0.2)'
