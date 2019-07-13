@@ -33,6 +33,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Instructions to be followed after starting the aplication
 VVI- Do not refresh the page once aplication get loaded, it will clear all the saved data in local storage
+since the application occupying the storage at the time of application load.
 
 1. inside the terminal run this command -npm install
 2. First go to setting page and add total budget and categories else user won't be able to add a new expense.
